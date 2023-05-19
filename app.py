@@ -3,17 +3,23 @@ from firebase_admin import db, credentials, initialize_app
 
 app = Flask(__name__)
 
-
 @app.route("/", methods=["GET", "POST"])
 def index():
-    i = False
-    if request.form.get("action") == "Senden":
+    data = ""
+    if request.form.get("action") == "Starten":
         data = request.form.get("Time")
-        ref = db.reference("/")
-        ref.update({"active": i})
-        ref.update({"Time": int(data)})
+        if str.isdigit(data) and int(data) > 0 and int(data) <= 30:
+            ref = db.reference("/")
+            ref.update({"active": True})
+            ref.update({"Time": data})
+        else:
+           data = "keine gültige Eingabe!"
+    
+    return render_template("index.html", data=data)
 
-    return render_template("index.html")
+@app.route("/cameraView")
+def cameraView():
+    return render_template("cameraView.html")
 
 
 if __name__ == "__main__":
