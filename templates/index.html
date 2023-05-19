@@ -3,15 +3,66 @@
 {% block head %}
 {% block style %}
 <style>
-    .test{
+    .test {
         color: blue;
         background-color: aquamarine;
     }
+
+    .button {
+        position: absolute;
+        top: 50%;
+        left: 25%;
+        width: 50%;
+        display: inline-block;
+        padding: 15px 25px;
+        font-size: 24px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        outline: none;
+        color: #fff;
+        background-color: #4CAF50;
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 9px #999;
+    }
+
+    .button:hover {
+        background-color: #3e8e41
+    }
+
+    .button:active {
+        background-color: #3e8e41;
+        box-shadow: 0 5px #666;
+        transform: translateY(4px);
+    }
+
+    .form {
+        background-color: aqua;
+        position: absolute;
+        left: 40%;
+        top: 35%;
+        width: 20%;
+    }
+
+    .label {
+        position: absolute;
+        top: 30%;
+        left: 40%;
+    }
+    
 </style>
 {% endblock style %}
 {% endblock %}
 
 {% block body %}
-<h1 class="test">Hello World</h1>
-<button>Hallo</button>
+
+<form method="post" action="/">
+    <label class="label" for="Time">Time between 1 - 30 minutes</label>
+    <input class="form" type="text" id="Time" value="" name="Time">
+    <br/><br/>
+    <input class="button" type="submit" value="Senden", name="action"/>
+</form>
+
+
 {% endblock %}
