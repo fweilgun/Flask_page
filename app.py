@@ -21,7 +21,6 @@ def index():
 def cameraView():
     return render_template("cameraView.html")
 
-
 if __name__ == "__main__":
     cred_obj = credentials.Certificate(
         "esp32-uvhaerter-firebase-adminsdk-ao16c-90b83e6e37.json"
